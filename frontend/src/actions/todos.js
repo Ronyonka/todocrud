@@ -1,5 +1,5 @@
 import  axios from 'axios';
-import { GET_TODOS } from './types';
+import { GET_TODOS, DELETE_TODO } from './types';
 
 // GET TODOS
 export const getTodos = () => async dispatch => {
@@ -9,3 +9,13 @@ export const getTodos = () => async dispatch => {
         payload: res.data
     });
 };
+
+// DELETE TODO
+export const deleteTodo = id => async dispatch => {
+    await axios.delete(`/api/todos/${id}/`);
+    dispatch({
+      type: DELETE_TODO,
+      payload: id
+    });
+    history.push('/');
+  };
