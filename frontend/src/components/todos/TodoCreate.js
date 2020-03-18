@@ -11,7 +11,6 @@ class TodoCreate extends Component {
   render() {
     return (
       <div style={{ marginTop: '2rem' }}>
-          <h1> This worked</h1>
         <TodoForm destroyOnUnmount={false} onSubmit={this.onSubmit} />
       </div>
     );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import Header from './layout/Header';
 import Dashboard from './todos/Dashboard';
 
 import { Provider } from 'react-redux';
@@ -10,6 +11,7 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
+                <Header />
                 <Dashboard />
             </Provider>
         );
