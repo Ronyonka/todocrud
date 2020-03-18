@@ -1,5 +1,15 @@
 import  axios from 'axios';
-import { GET_TODOS, ADD_TODO } from './types';
+import history from '../history';
+import { GET_TODOS, GET_TODO, ADD_TODO, DELETE_TODO } from './types';
+
+// GET TODO
+export const getTodo = id => async dispatch => {
+  const res = await axios.get(`/api/todos/${id}/`);
+  dispatch({
+    type: GET_TODO,
+    payload: res.data
+  })
+}
 
 // GET TODOS
 export const getTodos = () => async dispatch => {
@@ -19,3 +29,13 @@ export const addTodo = formValues => async dispatch => {
   });
   dispatch(reset('todoForm'));
 };
+
+// DELETE TODO
+export const deleteTodo = id => async dispatch => {
+  await axios.delete(`/api/todos/${id}`);
+  dispatch({
+    type: DELETE_TODO,
+    payload: id
+  });
+  history.push('/');
+}
